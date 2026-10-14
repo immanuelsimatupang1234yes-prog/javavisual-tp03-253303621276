@@ -7,6 +7,8 @@ public class Character {
     private int level;
     private int hitPoints;
     private int attackPower;
+    private int mana;
+    
         // Constructor 1: karakter BARU (statistik dihitung otomatis)
     public Character(String name, CharacterType type, int level) {
         this.name = name;
