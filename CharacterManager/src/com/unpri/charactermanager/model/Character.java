@@ -8,7 +8,7 @@ public class Character {
     private int hitPoints;
     private int attackPower;
     private int mana;
-    
+
         // Constructor 1: karakter BARU (statistik dihitung otomatis)
     public Character(String name, CharacterType type, int level) {
         this.name = name;
@@ -46,6 +46,14 @@ public class Character {
         this.level = level;
         this.hitPoints = calculateBaseHP();
         this.attackPower = calculateBaseAttack();
+    }
+        public int getMana() { return mana; }
+
+    public void setMana(int mana) {
+        if (mana < 0) {
+            throw new IllegalArgumentException("Mana tidak boleh negatif");
+        }
+        this.mana = mana;
     }
 
     @Override
