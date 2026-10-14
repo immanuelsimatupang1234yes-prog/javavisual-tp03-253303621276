@@ -29,4 +29,4 @@ javavisual-tp03-253303621276/
 
 - Nama: Imanuel Christ P Simatupang
 - NIM: 253303621276
-- Analisis Bagian D (Google Docs): [link menyusul]
+- Analisis Bagian D (Google Docs): https://docs.google.com/document/d/1TI8xPdEMy4z-I7K7wC-oL94S7rXh3nMTShnTTqvBsds/edit?usp=sharing
