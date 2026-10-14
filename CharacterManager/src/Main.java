@@ -22,5 +22,12 @@ public class Main {
         System.out.println(">> Nama karakter: " + hero.getName());
         System.out.println(">> Jenis karakter: " + hero.getType());
         System.out.println(">> HP saat ini: " + hero.getHitPoints());
+        
+        System.out.println();
+        System.out.println("=== Mini-Challenge ===");
+        Character healer = new Character("Elara", CharacterType.HEALER, 2);
+        healer.setMana(80);
+        System.out.println(healer);
+        System.out.println(">> " + healer.getName() + " masih hidup? " + healer.isAlive());
     }
 }
