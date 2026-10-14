@@ -66,6 +66,7 @@ public class Character {
                ", type=" + type +
                ", level=" + level +
                ", hp=" + hitPoints +
-               ", atk=" + attackPower + '}';
+               ", atk=" + attackPower + 
+               ", mana=" + mana +'}';
     }
 }
