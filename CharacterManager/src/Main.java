@@ -28,6 +28,6 @@ public class Main {
         Character healer = new Character("Elara", CharacterType.HEALER, 2);
         healer.setMana(80);
         System.out.println(healer);
-        System.out.println(">> " + healer.getName() + " masih hidup? " + healer.isAlive());
+        System.out.println(">> " + healer.getName() + " masih hidup? " + healer.isAlive() );
     }
 }
