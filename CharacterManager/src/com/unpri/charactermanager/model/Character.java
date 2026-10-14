@@ -54,6 +54,9 @@ public class Character {
             throw new IllegalArgumentException("Mana tidak boleh negatif");
         }
         this.mana = mana;
+    } 
+        public boolean isAlive() {
+        return hitPoints > 0;
     }
 
     @Override
