@@ -1,33 +1,42 @@
 import com.unpri.charactermanager.model.Character;
+import com.unpri.charactermanager.model.CharacterManager;
 import com.unpri.charactermanager.model.CharacterType;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== Character Manager v0.1 ===");
+        System.out.println("=== Character Manager v0.2 ===");
+        CharacterManager manager = new CharacterManager();
 
-        Character hero = new Character("Arjuna", CharacterType.WARRIOR, 5);
-        Character wizard = new Character("Merlin", CharacterType.MAGE, 3);
-        Character scout = new Character("Athena", CharacterType.ARCHER, 4);
+        System.out.println("\n--- Tambah karakter ---");
+        manager.addCharacter(new Character("Arjuna", CharacterType.WARRIOR, 5));
+        manager.addCharacter(new Character("Merlin", CharacterType.MAGE, 3));
+        manager.addCharacter(new Character("Athena", CharacterType.ARCHER, 4));
+        System.out.println("Total karakter: " + manager.getTotalCharacters());
 
-        System.out.println(hero);
-        System.out.println(wizard);
-        System.out.println(scout);
-        System.out.println();
+        System.out.println("\n--- Tolak duplikat ---");
+        manager.addCharacter(new Character("Arjuna", CharacterType.MAGE, 1));
+        System.out.println("Total karakter: " + manager.getTotalCharacters());
+        System.out.println("Total objek Character dibuat: " + Character.getTotalCharacterCreated());
 
-        System.out.println(">> " + hero.getName() + " level up!");
-        hero.setLevel(hero.getLevel() + 1);
-        System.out.println("After level up: " + hero);
-        System.out.println();
+        System.out.println("\n--- Cari dan hapus ---");
+        System.out.println("Cari Merlin: " + manager.findByName("Merlin"));
+        System.out.println("Cari Zeus: " + manager.findByName("Zeus"));
+        manager.removeCharacter("Athena");
+        manager.removeCharacter("Zeus");
+        System.out.println("Total karakter: " + manager.getTotalCharacters());
 
-        System.out.println(">> Nama karakter: " + hero.getName());
-        System.out.println(">> Jenis karakter: " + hero.getType());
-        System.out.println(">> HP saat ini: " + hero.getHitPoints());
-        
-        System.out.println();
-        System.out.println("=== Mini-Challenge ===");
-        Character healer = new Character("Elara", CharacterType.HEALER, 2);
-        healer.setMana(80);
-        System.out.println(healer);
-        System.out.println(">> " + healer.getName() + " masih hidup? " + healer.isAlive() );
+        // ===== EKSPERIMEN: Object Reference =====
+        System.out.println("\n--- Eksperimen Reference ---");
+        Character asli = manager.findByName("Arjuna");
+        Character duplikatReferensi = asli;
+        System.out.println("Level Arjuna sebelum: " + asli.getLevel());
+        duplikatReferensi.setLevel(99);
+        System.out.println("Level Arjuna sesudah (lewat 'asli'): " + asli.getLevel());
+        System.out.println("asli == duplikatReferensi? " + (asli == duplikatReferensi));
+
+        java.util.ArrayList<Character> salinanList = manager.getAllCharacters();
+        salinanList.add(new Character("Hantu", CharacterType.MAGE, 1));
+        System.out.println("Total di manager asli: " + manager.getTotalCharacters());
+        System.out.println("Total di salinan list : " + salinanList.size());
     }
 }
