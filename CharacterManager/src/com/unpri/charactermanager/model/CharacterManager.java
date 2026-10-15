@@ -67,4 +67,58 @@ public class CharacterManager {
     public ArrayList<Character> getAllCharacters() {
         return new ArrayList<>(characterList);
     }
+
+    // ===== BAGIAN B: Mini-Challenge =====
+
+    /**
+     * Menghitung rata-rata level seluruh karakter.
+     * @return rata-rata level, atau 0 jika list kosong (menghindari pembagian dengan nol)
+     */
+    public double getAverageLevel() {
+        if (characterList.isEmpty()) {
+            return 0;
+        }
+        int sum = 0;
+        for (Character c : characterList) {
+            sum += c.getLevel();
+        }
+        return (double) sum / characterList.size();
+    }
+
+    /**
+     * Mengembalikan semua karakter dengan tipe tertentu.
+     * @return list baru berisi karakter bertipe tersebut (kosong jika tidak ada)
+     */
+    public ArrayList<Character> findByType(CharacterType type) {
+        ArrayList<Character> result = new ArrayList<>();
+        for (Character c : characterList) {
+            if (c.getType() == type) {
+                result.add(c);
+            }
+        }
+        return result;
+    }
+
+    // ===== BAGIAN C: Fitur rancangan sendiri =====
+
+    /**
+     * Membuat ringkasan jumlah karakter untuk setiap tipe.
+     * Mengembalikan String (bukan list), sehingga ArrayList internal
+     * tidak terekspos ke pemanggil.
+     *
+     * @return ringkasan berbentuk "WARRIOR: 1  MAGE: 1  ARCHER: 0  HEALER: 0"
+     */
+    public String getTypeSummary() {
+        StringBuilder sb = new StringBuilder();
+        for (CharacterType type : CharacterType.values()) {
+            int count = 0;
+            for (Character c : characterList) {
+                if (c.getType() == type) {
+                    count++;
+                }
+            }
+            sb.append(type).append(": ").append(count).append("  ");
+        }
+        return sb.toString().trim();
+    }
 }
