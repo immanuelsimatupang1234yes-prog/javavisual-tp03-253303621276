@@ -13,7 +13,7 @@ public class Main {
         manager.addCharacter(new Character("Merlin", CharacterType.MAGE, 3));
         manager.addCharacter(new Character("Athena", CharacterType.ARCHER, 4));
         manager.addCharacter(new Character("Elara", CharacterType.HEALER, 2));    // karakter baru 1
-        manager.addCharacter(new Character("Gandalf", CharacterType.MAGE, 7));    // karakter baru 2
+        manager.addCharacter(new Character("Gandalf", CharacterType.MAGE, 10));    // karakter baru 2
 
         // 2. Jalankan GUI dengan AMAN di Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
