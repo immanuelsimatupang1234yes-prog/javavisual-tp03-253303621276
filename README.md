@@ -122,11 +122,11 @@ secara dinamis lewat loop, ditambah statistik "Rata-rata Level" di bawah daftar.
 
 Sebelum data diubah (Gandalf level 7, rata-rata level 4.20):
 
-![MainWindow sebelum data diubah](screenshots/Screenshot 2026-10-21 160333.png)
+![MainWindow sebelum data diubah](screenshots/tp8-sebelum.png)
 
 Sesudah data diubah (Gandalf level 10, rata-rata level 4.80):
 
-![MainWindow sesudah data diubah](screenshots/Screenshot 2026-10-21 163031.png)
+![MainWindow sesudah data diubah](screenshots/tp8-sesudah.png)
 
 Kedua screenshot memuat 5 karakter dan membuktikan bahwa statistik ikut berubah
 saat data diubah.
