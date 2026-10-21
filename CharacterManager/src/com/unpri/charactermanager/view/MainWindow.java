@@ -30,7 +30,7 @@ public class MainWindow extends JFrame {
 
     private void initComponents() {
         mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));   // tersusun ke bawah
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
 
         mainPanel.add(new JLabel("=== Daftar Karakter ==="));
@@ -43,6 +43,22 @@ public class MainWindow extends JFrame {
             mainPanel.add(label);
         }
 
-        add(mainPanel);   // add() milik JFrame (this)
+        // MINI-CHALLENGE: statistik rata-rata level di bawah daftar
+        JLabel averageLabel = new JLabel("Rata-rata Level: " + String.format("%.2f", calculateAverageLevel()));
+        averageLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+        mainPanel.add(averageLabel);
+
+        add(mainPanel);
+    }
+
+    private double calculateAverageLevel() {
+        if (characterList.isEmpty()) {
+            return 0;   // hindari pembagian dengan nol
+        }
+        int sum = 0;
+        for (Character c : characterList) {
+            sum += c.getLevel();
+        }
+        return (double) sum / characterList.size();
     }
 }
