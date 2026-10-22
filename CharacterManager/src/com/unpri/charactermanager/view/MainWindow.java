@@ -18,7 +18,7 @@ public class MainWindow extends JFrame {
     private ArrayList<Character> characterList;    // data dari Main.java (Model)
 
     public MainWindow(ArrayList<Character> characterList) {
-        super("Character Manager v0.4");           // versi naik: sprint #4
+        super("Character Manager v0.4");
         this.characterList = characterList;
 
         initComponents();                          // 1. susun semua komponen dulu
@@ -29,7 +29,6 @@ public class MainWindow extends JFrame {
     }
 
     private void initComponents() {
-        // satu kolom, jumlah baris menyesuaikan, jarak vertikal 8 px
         mainPanel = new JPanel(new GridLayout(0, 1, 0, 8));
         mainPanel.setBackground(AppTheme.BG_MAIN);
         mainPanel.setBorder(AppTheme.PANEL_BORDER);
@@ -60,13 +59,29 @@ public class MainWindow extends JFrame {
                     + " | ATK:" + c.getAttackPower();   // hanya MEMBACA lewat getter
 
         JLabel lbl = new JLabel(info);
-        lbl.setFont(AppTheme.FONT_BODY);
-        lbl.setForeground(AppTheme.TEXT_LIGHT);
         lbl.setBackground(AppTheme.colorFor(c.getType()));   // warna dari role
         lbl.setOpaque(true);                                 // WAJIB agar background tampak
         lbl.setBorder(AppTheme.CARD_BORDER);
-        lbl.setToolTipText(AppTheme.describe(c.getType()));
-        lbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        // Mini-Challenge: level tinggi tampil emas dan tebal
+        if (c.getLevel() >= AppTheme.HIGH_LEVEL_THRESHOLD) {
+            lbl.setForeground(AppTheme.GOLD);
+            lbl.setFont(AppTheme.FONT_BODY_BOLD);
+        } else {
+            lbl.setForeground(AppTheme.TEXT_LIGHT);
+            lbl.setFont(AppTheme.FONT_BODY);
+        }
+
+        // Properti tambahan 1: tooltip berisi deskripsi role dan detail HP/ATK
+        lbl.setToolTipText(AppTheme.describe(c.getType())
+                + " | HP " + c.getHitPoints() + ", ATK " + c.getAttackPower());
+
+        // Properti tambahan 2: karakter level terendah dinonaktifkan
+        if (c.getLevel() <= AppTheme.DISABLED_LEVEL) {
+            lbl.setEnabled(false);
+        } else {
+            lbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
         return lbl;
     }
 
