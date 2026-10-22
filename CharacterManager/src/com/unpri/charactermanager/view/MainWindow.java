@@ -1,54 +1,82 @@
 package com.unpri.charactermanager.view;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.util.ArrayList;
+import javax.swing.SwingConstants;
+
 import com.unpri.charactermanager.model.Character;
 
-/**
- * Jendela utama aplikasi Character Manager.
- * Menampilkan daftar karakter yang diterima dari luar (bukan dibuat sendiri).
- */
 public class MainWindow extends JFrame {
 
-    private JPanel mainPanel;
-    private ArrayList<Character> characterList;   // data yang akan ditampilkan
+    private JPanel mainPanel;                      // container utama
+    private ArrayList<Character> characterList;    // data dari Main.java (Model)
 
     public MainWindow(ArrayList<Character> characterList) {
-        super("Character Manager v0.3");           // judul title bar
-        this.characterList = characterList;        // simpan data yang diterima dari Main.java
+        super("Character Manager v0.4");           // versi naik: sprint #4
+        this.characterList = characterList;
 
-        initComponents();
-
-        setSize(500, 450);
+        initComponents();                          // 1. susun semua komponen dulu
+        pack();                                    // 2. ukuran jendela mengikuti isi
+        setMinimumSize(new Dimension(420, 300));   // 3. cegah jendela terlalu kecil
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null);               // 4. pusatkan SETELAH pack()
     }
 
     private void initComponents() {
-        mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        // satu kolom, jumlah baris menyesuaikan, jarak vertikal 8 px
+        mainPanel = new JPanel(new GridLayout(0, 1, 0, 8));
+        mainPanel.setBackground(AppTheme.BG_MAIN);
+        mainPanel.setBorder(AppTheme.PANEL_BORDER);
 
-        mainPanel.add(new JLabel("=== Daftar Karakter ==="));
-
-        // DINAMIS: satu JLabel dibuat untuk setiap karakter lewat loop
+        mainPanel.add(createTitleLabel());
         for (Character c : characterList) {
-            JLabel label = new JLabel(c.getName() + " (" + c.getType() + ") - Level " + c.getLevel()
-                    + " | HP: " + c.getHitPoints() + " | ATK: " + c.getAttackPower());
-            label.setBorder(BorderFactory.createEmptyBorder(4, 0, 4, 0));
-            mainPanel.add(label);
+            mainPanel.add(createCharacterLabel(c));
         }
-
-        // MINI-CHALLENGE: statistik rata-rata level di bawah daftar
-        JLabel averageLabel = new JLabel("Rata-rata Level: " + String.format("%.2f", calculateAverageLevel()));
-        averageLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
-        mainPanel.add(averageLabel);
+        mainPanel.add(createAverageLabel());
 
         add(mainPanel);
+    }
+
+    /** Membuat judul layar. */
+    private JLabel createTitleLabel() {
+        JLabel lbl = new JLabel("Daftar Karakter (" + characterList.size() + ")",
+                                SwingConstants.CENTER);
+        lbl.setFont(AppTheme.FONT_TITLE);
+        lbl.setForeground(AppTheme.TEXT_MAIN);
+        return lbl;
+    }
+
+    /** Membuat satu kartu karakter (JLabel berwarna sesuai role). */
+    private JLabel createCharacterLabel(Character c) {
+        String info = c.getName() + " | " + c.getType()
+                    + " | Lv." + c.getLevel()
+                    + " | HP:" + c.getHitPoints()
+                    + " | ATK:" + c.getAttackPower();   // hanya MEMBACA lewat getter
+
+        JLabel lbl = new JLabel(info);
+        lbl.setFont(AppTheme.FONT_BODY);
+        lbl.setForeground(AppTheme.TEXT_LIGHT);
+        lbl.setBackground(AppTheme.colorFor(c.getType()));   // warna dari role
+        lbl.setOpaque(true);                                 // WAJIB agar background tampak
+        lbl.setBorder(AppTheme.CARD_BORDER);
+        lbl.setToolTipText(AppTheme.describe(c.getType()));
+        lbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        return lbl;
+    }
+
+    /** Statistik dari Sprint #3: rata-rata level. */
+    private JLabel createAverageLabel() {
+        JLabel lbl = new JLabel("Rata-rata Level: " + String.format("%.2f", calculateAverageLevel()),
+                                SwingConstants.CENTER);
+        lbl.setFont(AppTheme.FONT_MONO);
+        lbl.setForeground(AppTheme.TEXT_MAIN);
+        return lbl;
     }
 
     private double calculateAverageLevel() {
