@@ -38,9 +38,9 @@ public final class AppTheme {
     public static Color colorFor(CharacterType type) {
         switch (type) {
             case WARRIOR: return Color.decode("#d63031"); // merah
-            case MAGE:    return Color.decode("#0984e3"); // biru
+            case MAGE:    return Color.decode("#092de3"); // biru
             case ARCHER:  return Color.decode("#00b894"); // hijau
-            case HEALER:  return Color.decode("#6c5ce7"); // ungu
+            case HEALER:  return Color.decode("#73e75c"); // ungu
             default:      return Color.GRAY;              // cadangan bila ada role baru
         }
     }
