@@ -141,15 +141,22 @@ public class MainWindow extends JFrame {
         legend.add(Box.createVerticalGlue());                        // dorong semua ke atas
         return legend;
     }
-        /** Bar status (SOUTH): versi dasar, teks rata kiri. */
+            /** Bar status (SOUTH): teks status di kiri, versi di kanan. */
     private JPanel createStatusPanel() {
-        JPanel status = new JPanel(new FlowLayout(FlowLayout.LEFT, 16, 6));
+        JPanel status = new JPanel(new BorderLayout());
         status.setBackground(AppTheme.BG_STATUS);
+        status.setBorder(AppTheme.STATUS_BORDER);
 
-        JLabel lbl = new JLabel("Total: " + characterList.size() + " karakter | Siap");
-        lbl.setFont(AppTheme.FONT_MONO);
-        lbl.setForeground(AppTheme.TEXT_MUTED);
-        status.add(lbl);
+        JLabel info = new JLabel("Total: " + characterList.size() + " karakter | Siap");
+        info.setFont(AppTheme.FONT_MONO);
+        info.setForeground(AppTheme.TEXT_MUTED);
+
+        JLabel version = new JLabel(VERSION);
+        version.setFont(AppTheme.FONT_MONO);
+        version.setForeground(AppTheme.TEXT_MUTED);
+
+        status.add(info,    BorderLayout.WEST);
+        status.add(version, BorderLayout.EAST);
         return status;
     }
 }
