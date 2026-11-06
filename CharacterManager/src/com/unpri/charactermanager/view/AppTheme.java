@@ -14,7 +14,10 @@ public final class AppTheme {
 
     // ---------- Palet warna ----------
     public static final Color BG_MAIN    = Color.decode("#13131f"); // latar jendela
+    public static final Color BG_STATUS  = Color.decode("#0d0d1a"); // latar bar status, lebih gelap
+    public static final Color BG_PANEL   = Color.decode("#1e1e30"); // latar sel statistik
     public static final Color TEXT_MAIN  = Color.decode("#dfe6e9"); // teks utama
+    public static final Color TEXT_MUTED = Color.decode("#9d9dbf"); // teks sekunder / metadata
     public static final Color TEXT_LIGHT = Color.WHITE;             // teks di atas kartu berwarna
     public static final Color GOLD       = Color.decode("#fdcb6e"); // aksen karakter level tinggi
 
@@ -25,8 +28,13 @@ public final class AppTheme {
     public static final Font FONT_MONO      = new Font("Monospaced", Font.PLAIN, 13);
 
     // ---------- Border (immutable, aman dipakai ulang) ----------
-    public static final Border CARD_BORDER  = BorderFactory.createEmptyBorder(8, 12, 8, 12);
-    public static final Border PANEL_BORDER = BorderFactory.createEmptyBorder(16, 16, 16, 16);
+    public static final Border CARD_BORDER   = BorderFactory.createEmptyBorder(8, 12, 8, 12);
+    public static final Border PANEL_BORDER  = BorderFactory.createEmptyBorder(16, 16, 16, 16);
+    public static final Border HEADER_BORDER = BorderFactory.createEmptyBorder(16, 16, 8, 16);
+    public static final Border STATS_BORDER  = BorderFactory.createEmptyBorder(0, 16, 8, 16);
+    public static final Border LIST_BORDER   = BorderFactory.createEmptyBorder(8, 16, 8, 8);
+    public static final Border LEGEND_BORDER = BorderFactory.createEmptyBorder(8, 8, 8, 16);
+    public static final Border STATUS_BORDER = BorderFactory.createEmptyBorder(6, 16, 6, 16);
 
     // ---------- Aturan tampilan (urusan View, bukan aturan game) ----------
     public static final int HIGH_LEVEL_THRESHOLD = 5;  // level >= ini: teks emas dan tebal
@@ -38,9 +46,9 @@ public final class AppTheme {
     public static Color colorFor(CharacterType type) {
         switch (type) {
             case WARRIOR: return Color.decode("#d63031"); // merah
-            case MAGE:    return Color.decode("#092de3"); // biru
+            case MAGE:    return Color.decode("#092de3"); // biru tua
             case ARCHER:  return Color.decode("#00b894"); // hijau
-            case HEALER:  return Color.decode("#73e75c"); // ungu
+            case HEALER:  return Color.decode("#73e75c"); // hijau muda
             default:      return Color.GRAY;              // cadangan bila ada role baru
         }
     }
