@@ -34,12 +34,13 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);                // 4. pusatkan SETELAH pack()
     }
 
-    private void initComponents() {
+        private void initComponents() {
         getContentPane().setBackground(AppTheme.BG_MAIN);   // cegah celah abu-abu
         setLayout(new BorderLayout());
 
         add(createHeaderPanel(), BorderLayout.NORTH);
         add(createListArea(),    BorderLayout.CENTER);      // satu-satunya yang tumbuh
+        add(createLegendPanel(), BorderLayout.EAST);
     }
 
     /** Header (NORTH): judul di kiri, jumlah karakter di kanan. */
@@ -111,5 +112,32 @@ public class MainWindow extends JFrame {
             lbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
         return lbl;
+    }
+        /** Legenda role (EAST): BoxLayout vertikal, diturunkan dari CharacterType.values(). */
+    private JPanel createLegendPanel() {
+        JPanel legend = new JPanel();
+        legend.setLayout(new BoxLayout(legend, BoxLayout.Y_AXIS));   // target = panel ini sendiri
+        legend.setBackground(AppTheme.BG_MAIN);
+        legend.setBorder(AppTheme.LEGEND_BORDER);
+
+        JLabel head = new JLabel("Legenda Role");
+        head.setFont(AppTheme.FONT_BODY_BOLD);
+        head.setForeground(AppTheme.TEXT_MAIN);
+        legend.add(head);
+        legend.add(Box.createVerticalStrut(8));                      // spasi tetap 8 px
+
+        for (CharacterType type : CharacterType.values()) {          // satu chip per role
+            JLabel chip = new JLabel(type.name());
+            chip.setOpaque(true);
+            chip.setBackground(AppTheme.colorFor(type));
+            chip.setForeground(AppTheme.TEXT_LIGHT);
+            chip.setFont(AppTheme.FONT_MONO);
+            chip.setBorder(AppTheme.CARD_BORDER);
+            chip.setToolTipText(AppTheme.describe(type));
+            legend.add(chip);
+            legend.add(Box.createVerticalStrut(6));
+        }
+        legend.add(Box.createVerticalGlue());                        // dorong semua ke atas
+        return legend;
     }
 }
