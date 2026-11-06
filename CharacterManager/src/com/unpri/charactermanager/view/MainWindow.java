@@ -34,13 +34,14 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);                // 4. pusatkan SETELAH pack()
     }
 
-        private void initComponents() {
+           private void initComponents() {
         getContentPane().setBackground(AppTheme.BG_MAIN);   // cegah celah abu-abu
         setLayout(new BorderLayout());
 
         add(createHeaderPanel(), BorderLayout.NORTH);
         add(createListArea(),    BorderLayout.CENTER);      // satu-satunya yang tumbuh
         add(createLegendPanel(), BorderLayout.EAST);
+        add(createStatusPanel(), BorderLayout.SOUTH);
     }
 
     /** Header (NORTH): judul di kiri, jumlah karakter di kanan. */
@@ -139,5 +140,16 @@ public class MainWindow extends JFrame {
         }
         legend.add(Box.createVerticalGlue());                        // dorong semua ke atas
         return legend;
+    }
+        /** Bar status (SOUTH): versi dasar, teks rata kiri. */
+    private JPanel createStatusPanel() {
+        JPanel status = new JPanel(new FlowLayout(FlowLayout.LEFT, 16, 6));
+        status.setBackground(AppTheme.BG_STATUS);
+
+        JLabel lbl = new JLabel("Total: " + characterList.size() + " karakter | Siap");
+        lbl.setFont(AppTheme.FONT_MONO);
+        lbl.setForeground(AppTheme.TEXT_MUTED);
+        status.add(lbl);
+        return status;
     }
 }
