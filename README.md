@@ -31,22 +31,6 @@ javavisual-tp03-253303621276/
 - NIM: 253303621276
 - Analisis Bagian D (Google Docs): https://docs.google.com/document/d/1TI8xPdEMy4z-I7K7wC-oL94S7rXh3nMTShnTTqvBsds/edit?usp=sharing
 
-# Character Manager — TP3 (Java Visual SIH-6406)
-
-Proyek ini adalah fondasi model class untuk aplikasi Character Manager
-berbasis Java 17. Berisi enum `CharacterType` dan class `Character` dengan
-dua constructor, validasi pada setter, serta fitur tambahan `mana` dan
-`isAlive()`. Class ini akan menjadi dasar GUI pada sprint berikutnya.
-
-## Output Terminal (TP3)
-
-![Output terminal Character Manager](screenshots/output.png)
-
-## Identitas
-
-- Nama: Imanuel Christ P Simatupang
-- NIM: 253303621276
-- Analisis Bagian D TP3 (Google Docs): [link Google Docs TP3 yang sudah ada]
 
 ---
 
@@ -223,7 +207,7 @@ Batas level 1 juga disimpan sebagai konstanta bernama (`DISABLED_LEVEL`).
 ### Bukti `git diff`: package `model` tidak berubah
 
 ```
-git diff git rev-parse --short ee72bed~1 HEAD --stat -- CharacterManager/src/com/unpri/charactermanager/model
+git diff ee72bed~1 HEAD --stat -- CharacterManager/src/com/unpri/charactermanager/model
 ```
 
 Output perintah di atas kosong, artinya tidak ada perubahan di `Character.java`,
@@ -257,7 +241,7 @@ javavisual-tp03/
 
 ### Analisis Bagian D TP10 (Google Docs)
 
-[lhttps://docs.google.com/document/d/1iFcH3bTUDjLM2RNOV8unzBVll7e17SdCR_CFz5f4g7A/edit?usp=sharing]
+[https://docs.google.com/document/d/1iFcH3bTUDjLM2RNOV8unzBVll7e17SdCR_CFz5f4g7A/edit?usp=sharing]
 
 
 ---
