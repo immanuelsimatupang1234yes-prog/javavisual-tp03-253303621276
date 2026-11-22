@@ -3,6 +3,7 @@ package com.unpri.charactermanager.model;
 public class Character {
     public static final int MIN_LEVEL = 1;
     public static final int MAX_LEVEL = 99;
+    public static final int MAX_MAGE_LEVEL = 60;
 
     private int id;
     private String name;
@@ -48,6 +49,9 @@ public class Character {
         }
         if (level < MIN_LEVEL || level > MAX_LEVEL) {
             throw new IllegalArgumentException("Level harus " + MIN_LEVEL + "-" + MAX_LEVEL);
+        }
+        if (type == CharacterType.MAGE && level > MAX_MAGE_LEVEL) {
+    throw new IllegalArgumentException("MAGE tidak boleh di atas level " + MAX_MAGE_LEVEL);
         }
     }
 
