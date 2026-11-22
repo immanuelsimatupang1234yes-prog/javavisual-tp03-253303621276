@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class CharacterManager {
     private ArrayList<Character> characterList;
+    public static final int MAX_CHARACTERS = 20;
 
     public CharacterManager() {
         this.characterList = new ArrayList<>();
@@ -31,7 +32,10 @@ public class CharacterManager {
      * Menolak jika sudah ada karakter dengan nama yang sama.
      * @return true jika berhasil ditambahkan, false jika ditolak karena duplikat
      */
-    public boolean addCharacter(Character character) {
+        public boolean addCharacter(Character character) {
+        if (characterList.size() >= MAX_CHARACTERS) {
+            throw new IllegalStateException("Daftar penuh: maksimal " + MAX_CHARACTERS + " karakter");
+        }
         if (isNameTaken(character.getName())) {
             System.out.println("❌ Gagal: karakter dengan nama '" + character.getName() + "' sudah ada!");
             return false;
@@ -40,7 +44,6 @@ public class CharacterManager {
         System.out.println("✅ Karakter '" + character.getName() + "' berhasil ditambahkan.");
         return true;
     }
-
     /**
      * Mencari karakter berdasarkan nama.
      * @return object Character jika ditemukan, null jika tidak ada
