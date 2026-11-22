@@ -16,9 +16,16 @@ public class Main {
         manager.addCharacter(new Character("Gandalf", CharacterType.MAGE, 10));
         manager.addCharacter(new Character("Gatotkaca", CharacterType.WARRIOR, 7));
         manager.addCharacter(new Character("Morgana", CharacterType.MAGE, 1));
-        manager.addCharacter(new Character("Artemis", CharacterType.ARCHER, 6));   // karakter ke-8
+        manager.addCharacter(new Character("Artemis", CharacterType.ARCHER, 6));
 
-        // 2. Jalankan GUI dengan AMAN di Event Dispatch Thread
+        // 2. Bukti: Model menolak data buruk walaupun tidak lewat form
+        try {
+            new Character("Merlin Tua", CharacterType.MAGE, 80);
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Model menolak: " + ex.getMessage());
+        }
+
+        // 3. Jalankan GUI dengan AMAN di Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
             MainWindow window = new MainWindow(manager);
             window.setVisible(true);
