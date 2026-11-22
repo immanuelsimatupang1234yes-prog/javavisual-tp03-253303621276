@@ -14,12 +14,25 @@ public class CharacterManager {
     }
 
     /**
+     * Memeriksa apakah nama sudah dipakai (tidak membedakan huruf besar-kecil).
+     * Keunikan ada di Model karena hanya manager yang tahu seluruh daftar.
+     */
+    public boolean isNameTaken(String name) {
+        for (Character c : characterList) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Menambahkan karakter baru ke dalam list.
      * Menolak jika sudah ada karakter dengan nama yang sama.
      * @return true jika berhasil ditambahkan, false jika ditolak karena duplikat
      */
     public boolean addCharacter(Character character) {
-        if (findByName(character.getName()) != null) {
+        if (isNameTaken(character.getName())) {
             System.out.println("❌ Gagal: karakter dengan nama '" + character.getName() + "' sudah ada!");
             return false;
         }
@@ -68,8 +81,6 @@ public class CharacterManager {
         return new ArrayList<>(characterList);
     }
 
-    // ===== BAGIAN B: Mini-Challenge =====
-
     /**
      * Menghitung rata-rata level seluruh karakter.
      * @return rata-rata level, atau 0 jika list kosong (menghindari pembagian dengan nol)
@@ -99,14 +110,9 @@ public class CharacterManager {
         return result;
     }
 
-    // ===== BAGIAN C: Fitur rancangan sendiri =====
-
     /**
      * Membuat ringkasan jumlah karakter untuk setiap tipe.
-     * Mengembalikan String (bukan list), sehingga ArrayList internal
-     * tidak terekspos ke pemanggil.
-     *
-     * @return ringkasan berbentuk "WARRIOR: 1  MAGE: 1  ARCHER: 0  HEALER: 0"
+     * Mengembalikan String (bukan list), sehingga ArrayList internal tidak terekspos.
      */
     public String getTypeSummary() {
         StringBuilder sb = new StringBuilder();

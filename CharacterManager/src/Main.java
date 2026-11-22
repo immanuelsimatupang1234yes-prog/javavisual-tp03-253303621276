@@ -20,7 +20,7 @@ public class Main {
 
         // 2. Jalankan GUI dengan AMAN di Event Dispatch Thread
         SwingUtilities.invokeLater(() -> {
-            MainWindow window = new MainWindow(manager.getAllCharacters());
+            MainWindow window = new MainWindow(manager);
             window.setVisible(true);
         });
     }
