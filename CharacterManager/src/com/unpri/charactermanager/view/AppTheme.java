@@ -20,8 +20,8 @@ public final class AppTheme {
     public static final Color TEXT_MUTED = Color.decode("#9d9dbf"); // teks sekunder / metadata
     public static final Color TEXT_LIGHT = Color.WHITE;             // teks di atas kartu berwarna
     public static final Color GOLD       = Color.decode("#fdcb6e"); // aksen karakter level tinggi
-    public static final Color ERROR   = Color.decode("#ff7675"); // merah terang: terbaca di latar gelap
-    public static final Color SUCCESS = Color.decode("#55efc4"); // hijau terang untuk pesan berhasil
+    public static final Color ERROR      = Color.decode("#ff7675"); // pesan dan border error
+    public static final Color SUCCESS    = Color.decode("#55efc4"); // pesan sukses
 
     // ---------- Font ----------
     public static final Font FONT_TITLE     = new Font("SansSerif", Font.BOLD, 22);
@@ -37,6 +37,8 @@ public final class AppTheme {
     public static final Border LIST_BORDER   = BorderFactory.createEmptyBorder(8, 16, 8, 8);
     public static final Border LEGEND_BORDER = BorderFactory.createEmptyBorder(8, 8, 8, 16);
     public static final Border STATUS_BORDER = BorderFactory.createEmptyBorder(6, 16, 6, 16);
+    public static final Border FORM_BORDER   = BorderFactory.createEmptyBorder(8, 16, 8, 8);
+    public static final Border ERROR_BORDER  = BorderFactory.createLineBorder(ERROR, 2);
 
     // ---------- Aturan tampilan (urusan View, bukan aturan game) ----------
     public static final int HIGH_LEVEL_THRESHOLD = 5;  // level >= ini: teks emas dan tebal
