@@ -11,7 +11,7 @@ dan kode pada akhir TP12.
 | TP8 | GUI pertama: `MainWindow`, data dinamis | [tp08](https://github.com/immanuelsimatupang1234yes-prog/javavisual-tp03-253303621276/tree/tp08) | [Docs TP8](https://docs.google.com/document/d/1KiLVY2qjljAQn7smLqUMAAdyR7t12abo-elTMkI_t14/edit?usp=sharing) |
 | TP10 | `AppTheme`, warna per role, properti komponen | [tp10](https://github.com/immanuelsimatupang1234yes-prog/javavisual-tp03-253303621276/tree/tp10) | [Docs TP10](https://docs.google.com/document/d/1iFcH3bTUDjLM2RNOV8unzBVll7e17SdCR_CFz5f4g7A/edit?usp=sharing) |
 | TP12 | `BorderLayout`, scroll, legenda, bar status | [tp12](https://github.com/immanuelsimatupang1234yes-prog/javavisual-tp03-253303621276/tree/tp12) | [Docs TP12](https://docs.google.com/document/d/1np48Nh2uRFnJ3t-yYX4MizTj7w2-TRCpdJNKdamaFlk/edit?usp=sharing) |
-| TP14 | Form input, validasi dua lapis, `CharacterFormPanel` | [tp14](https://github.com/immanuelsimatupang1234yes-prog/javavisual-tp03-253303621276/tree/tp14) | [LINK GOOGLE DOCS TP14] |
+| TP14 | Form input, validasi dua lapis, `CharacterFormPanel` | [tp14](https://github.com/immanuelsimatupang1234yes-prog/javavisual-tp03-253303621276/tree/tp14) | [https://docs.google.com/document/d/1zDcp-gC6GXWXXvPDsevzwnYeCb7I2xF73Q6AanITezE/edit?usp=sharing] |
 
 ## Identitas
 
